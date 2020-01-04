@@ -1,0 +1,16 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build the Docker image and publish to registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: skynewz/hugo:v0.54.0
+          username: skynewz
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
